@@ -1,0 +1,53 @@
+﻿@page
+@model razor.Pages.ProductPages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create New Product</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js">
+</script>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Product.ProductName" class="control-label"></label>
+                <input asp-for="Product.ProductName" class="form-control" />
+                <span asp-validation-for="Product.ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Qty" class="control-label"></label>
+                <input asp-for="Product.Qty" class="form-control" />
+                <span asp-validation-for="Product.Qty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index" class="btn btn-success">Back to List</a>
+</div>
+@if (!ModelState.IsValid)
+{
+
+}
+<script>
+    swal("successful creation", "product created", "success", {
+        button: "press here to finish",
+
+    });
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
